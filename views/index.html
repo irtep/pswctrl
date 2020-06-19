@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IceZebra PswCtrl V1</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div id= "passAsker">
+        <center>
+        Password please:<br>
+        <input type= "password" id= "passInput"><input type= "button" value= "submit password">
+        </center>
+      </div>
+      <div id= "infoScreen" class= "redText">
+      </div>
+      <div id= "container">
+        <div id= "upLeft" class= "invis">
+          Hae kysymyksistä: <input type= "text"><input type= "button" id= "searchQ" value= "searchQ">
+        </div>
+        <div id= "downLeft">
+          <span class= "otsikko">Kysymykset:</span><br>
+        </div>
+        <div id= "upRight" class= "invis">
+          Hae vastauksista: <input type= "text"><input type= "button" id= "searchR" value= "searchR">
+        </div>
+        <div id= "downRight">
+          vastaukset tähän
+        </div>
+        <div id= "footer">
+          Lisää uusi: <br>
+          Uusi kysymys: <input type= "text" id= "newQuestion"><br>
+          Uusi vastaus: <input type= "text" id= "newResponse"><br>
+          <input type= "button" value= "sendNewQR" id= "sendNew"><br>
+          Huom! Kun lisäät uuden, se näkyy listassa vasta, kun olet virkistänyt selaimen.
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="dreams">
+      </section>
+    </main>
+    <script src="/script.js" type= "module"></script>
+  </body>
+</html>

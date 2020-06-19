@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Audiowide');
+
+.invis {
+  opacity: 0;
+}
+* {
+  padding: 10px;
+}
+body {
+  color: black;
+  text-shadow: 0 0 4px #FFF
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: silver;
+  background-image: linear-gradient(cyan, silver, silver, silver, white, white);
+}
+#container {
+  /*
+  font-family: 'Audiowide', cursive;
+  */
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 1% 1fr 1fr;
+  grid-template-areas:
+    'upLeftx upRightx'
+    'downLeftx downRightx'
+    'theFoot theFoot';
+    grid-gap: 1px;
+}
+#upLeft {
+  grid-area: upLeftx;
+}
+#downLeft {
+  grid-area: downLeftx;
+}
+#upRight {
+  grid-area: upRightx;
+}
+#downRight {
+  grid-area: downRightx;
+}
+#footer1 {
+  grid-area: theFoot;
+}
+.redText {
+  color: red;
+}
+.otsikko {
+  font-weight: bold;
+}
+input[type=button] {
+  font-family: 'Audiowide', cursive;
+  padding: 10px;
+  margin: 10px;
+  border: solid 4px black;
+  border-radius: 5px;
+  background: green;
+  color: black;
+}
+input[type=button]:hover {
+  background: white;
+  color: darkGreen;
+  cursor: pointer;
+}
+.clickable {
+  border: solid 1px white;
+  border-radius: 5px;
+  background-color: blue;
+  margin: 8px;
+  padding: 1px;
+  font-weight: bold;
+}
+.clickable:hover {
+  cursor: pointer;
+  color: black;
+  background: white;
+  transition: 1s;
+}
+#passAsker {
+  font-family: 'Metal Mania', cursive;
+  font-size: 200%;
+  color: black;
+  margin: 10px;
+}
