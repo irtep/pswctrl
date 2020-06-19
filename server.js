@@ -66,6 +66,7 @@ app.post('/addNew', (request, response) => {
     site: newEntryComing.site,
     psw: newEntryComing.psw
   });
+  console.log('newEntry: ', newEntry);
   newEntry.save( (err, entry1) => {
     if (err) return console.error(err);
     console.log("saved to entries collection.");
