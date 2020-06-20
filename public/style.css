@@ -49,6 +49,9 @@ body {
 .otsikko {
   font-weight: bold;
 }
+.silverText {
+  color: silver;
+}
 input[type=button] {
   font-family: 'Audiowide', cursive;
   padding: 10px;

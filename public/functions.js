@@ -4,15 +4,16 @@ const passAsker = document.getElementById('passAsker');
 const infoScreen = document.getElementById('infoScreen');
 const newQuestion = document.getElementById('newQuestion');
 const newResponse = document.getElementById('newResponse');
+const newUsername = document.getElementById('newUsername');
 
 export function addNewEntry() {
   if (newQuestion.value !== '' && newResponse.value !== '') {
-    const newEntry = {site: newQuestion.value, psw: newResponse.value}
+    const newEntry = {site: newQuestion.value, userName: newUsername.value, psw: newResponse.value}
     const pack = JSON.stringify(newEntry);
     const http = new XMLHttpRequest();
     const url = '/addNew';
     let params = 'MSG=' + pack;
-
+    //console.log('new userEntry: ', newEntry);
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = () => {
@@ -21,6 +22,7 @@ export function addNewEntry() {
     http.send(params);
     newQuestion.value = '';
     newResponse.value = '';
+    newUsername.value = '';
   }
 }
 
@@ -33,7 +35,7 @@ export function addNewEntry() {
 	    if (!succeed) {
 	      msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
 	    } else {
-	      msg = "Kopioitu leikepöydälle. CONTROL+V voit liimata."
+	      msg = "Salasana kopioitu leikepöydälle. CONTROL+V voit liimata."
 	    }
 	    if (typeof msgElem === "string") {
 	      msgElem = document.getElementById('infoScreen');

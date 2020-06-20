@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const app = express();
 const pasw = process.env.SECRET2;
+const bcrypt = require('bcrypt');
+const saltRounds = process.env.SECRET3;
 app.use(express.static('public'));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -16,6 +18,9 @@ const Schema = mongoose.Schema;
 
 const entrySchema = new Schema( {
   site: {
+    type: String
+  },
+  userName: {
     type: String
   },
   psw: {
@@ -60,19 +65,20 @@ app.post('/showAll', (request, response) => {
 // add new entry:
 app.post('/addNew', (request, response) => {
   const newEntryComing = JSON.parse(request.body.MSG);
-  console.log('new entry: ', newEntryComing);
-  const theQuery = { name: 'ot2'};
+  //const theQuery = { name: 'ot2'};
+  //console.log('newEntryComing: ', newEntryComing);
   const newEntry = entryModel({
     site: newEntryComing.site,
+    userName: newEntryComing.userName,
     psw: newEntryComing.psw
   });
-  console.log('newEntry: ', newEntry);
+  //console.log('newEntry: ', newEntry);
   newEntry.save( (err, entry1) => {
     if (err) return console.error(err);
     console.log("saved to entries collection.");
   });
   const sending = JSON.stringify('Database updated successfully!');
-  console.log("responding with data ");
+  //console.log("responding with data ");
   response.writeHead(200, {'Content-Type': 'text/plain'});
   response.end(sending);
 
@@ -80,6 +86,6 @@ app.post('/addNew', (request, response) => {
 app.post('/updateOld', (request, response) => {
 
 });
-const listener = app.listen(process.env.PORT, () => {
+const listener = app.listen(5544, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
