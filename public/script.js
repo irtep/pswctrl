@@ -15,13 +15,15 @@ function showData(clickedElement) {
   allData.forEach( (dataEntry, idx) => {
     if (dataEntry._id === clickedElement.target.id) {
       // add data
-      downRight.innerHTML = allData[idx].response;
+      const correctEntry = allData[idx];
+      //downRight.innerHTML = allData[idx].response;
+      downRight.innerHTML = `${correctEntry.site}<br> ${correctEntry.userName}<br><div id= "pswSpace" class= "silverText">${correctEntry.psw}</div>`;
       // copy to clipboard
-      copyToClipboardMsg(downRight, "msg");
+      copyToClipboardMsg(pswSpace, "msg");
       window.scrollTo(0, 0);
     }
   });
-}
+};
 
 function checkPass(pass) {
   // correct password length
@@ -30,9 +32,9 @@ function checkPass(pass) {
     const http = new XMLHttpRequest();
     const url = '/showAll';
     let params = 'MSG=' + passu;
-    
+
     http.open('POST', url, true);
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); 
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
         const records = JSON.parse(http.responseText);
@@ -49,7 +51,7 @@ function checkPass(pass) {
           allData.forEach( data => {
             //data.question
             // add question to page
-            downLeft.innerHTML += `<p id= ${data._id} class= "clickable">${data.question}</p>`;
+            downLeft.innerHTML += `<p id= ${data._id} class= "clickable">${data.site}</p>`;
             // add event listener to this
             const elements = document.getElementsByClassName('clickable');
             for (var i = 0; i < elements.length; i++) {
@@ -63,9 +65,9 @@ function checkPass(pass) {
   } else {
     infoScreen.innerHTML = 'wrong password!';
   }
-  
+
 }
-window.onload = (()=> { 
+window.onload = (()=> {
   const allDivs = document.getElementById('container');
   allDivs.classList.add('invis');
 });
