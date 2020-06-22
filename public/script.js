@@ -9,6 +9,13 @@ const checkingPass = document.getElementById('passInput').addEventListener("chan
 const sendNewEntry = document.getElementById('sendNew').addEventListener('click', addNewEntry);
 let allData = null;
 
+// this copies username
+function copyUNF() {
+  const unSpace = document.getElementById('userNameHere');
+  console.log('copy un');
+  copyToClipboardMsg(unSpace, "msg");
+}
+
 // this shows data of the clicked information
 function showData(clickedElement) {
   // find the data:
@@ -16,8 +23,11 @@ function showData(clickedElement) {
     if (dataEntry._id === clickedElement.target.id) {
       // add data
       const correctEntry = allData[idx];
-      //downRight.innerHTML = allData[idx].response;
-      downRight.innerHTML = `${correctEntry.site}<br> ${correctEntry.userName}<br><div id= "pswSpace" class= "silverText">${correctEntry.psw}</div>`;
+      downRight.innerHTML = `${correctEntry.site}<br> <div id= "userNameHere">${correctEntry.userName}</div>
+      <input type= "button" value= "copy username" id= "cUn">
+      <br><div id= "pswSpace" class= "silverText">${correctEntry.psw}</div>`;
+      // event listener for input button
+      const listenUNcopier = document.getElementById('cUn').addEventListener('click', copyUNF);
       // copy to clipboard
       copyToClipboardMsg(pswSpace, "msg");
       window.scrollTo(0, 0);
@@ -38,8 +48,7 @@ function checkPass(pass) {
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
         const records = JSON.parse(http.responseText);
-        //const records = http.responseText;
-        console.log('got records', records);
+        //console.log('got records', records);
         if (records === 'wrong password') {
           infoScreen.innerHTML = 'wrong password!';
         } else {
