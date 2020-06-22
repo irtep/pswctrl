@@ -17,7 +17,7 @@ export function addNewEntry() {
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = () => {
-      //console.log('sending champ: ', params);
+    //console.log('sending champ: ', params);
     }
     http.send(params);
     newQuestion.value = '';
