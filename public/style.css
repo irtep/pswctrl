@@ -13,7 +13,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: silver;
-  background-image: linear-gradient(cyan, silver, silver, silver, white, white);
 }
 #container {
   /*
@@ -67,17 +66,18 @@ input[type=button]:hover {
   cursor: pointer;
 }
 .clickable {
-  border: solid 1px white;
+  border: solid 2px green;
   border-radius: 5px;
-  background-color: blue;
+  background-color: white;
+  color: black;
   margin: 8px;
   padding: 1px;
   font-weight: bold;
 }
 .clickable:hover {
   cursor: pointer;
-  color: black;
-  background: white;
+  color: gold;
+  background: blue;
   transition: 1s;
 }
 #passAsker {
